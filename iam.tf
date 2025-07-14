@@ -18,6 +18,7 @@ resource "aws_iam_role_policy_attachment" "glue_service_policy" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole"
 }
 
+# Não criamos a role, apenas anexamos permissão ao grupo existente
 resource "aws_iam_group_policy_attachment" "glue_group_policy" {
   group      = "glue-doug-user-group"
   policy_arn = "arn:aws:iam::aws:policy/AWSGlueConsoleFullAccess"
