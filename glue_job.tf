@@ -4,7 +4,7 @@ resource "aws_glue_job" "mock_job" {
 
   command {
     name            = "glueetl"
-    script_location = "s3://${aws_s3_bucket.glue_scripts.bucket}/${aws_s3_object.glue_script.key}"
+    script_location = "s3://${data.aws_s3_bucket.glue_scripts.bucket}/${aws_s3_object.glue_script.key}"
     python_version  = "3"
   }
 
