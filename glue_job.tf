@@ -4,12 +4,12 @@ resource "aws_glue_job" "mock_job" {
 
   command {
     name            = "glueetl"
-    script_location = "s3://${aws_s3_bucket.glue_scripts.bucket}/job_script.py"
+    script_location = "s3://aws-glue-assets-086720243261-us-east-1/scripts/job_script.py"
     python_version  = "3"
   }
 
   default_arguments = {
-    "--JOB_NAME"   = "mock-glue-job"
+    "--JOB_NAME"   = "job-transform-test"
     "--INPUT_PATH" = "s3://douglasmaiatomebucket/dados/clientes.csv"
   }
 
