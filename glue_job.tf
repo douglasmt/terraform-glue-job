@@ -10,7 +10,7 @@ resource "aws_glue_job" "mock_job" {
 
   default_arguments = {
     "--JOB_NAME"   = "mock-glue-job"
-    "--INPUT_PATH" = "s3://meu-bucket/dados/clientes.csv"
+    "--INPUT_PATH" = "s3://douglasmaiatomebucket/dados/clientes.csv"
   }
 
   glue_version = "4.0"

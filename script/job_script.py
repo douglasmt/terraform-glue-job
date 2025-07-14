@@ -36,7 +36,7 @@ df_transformado = df.withColumn("nome", upper(col("nome"))) \
 
 logger.info(f"Transformações concluídas. Registros filtrados: {df_transformado.count()}")
 
-output_path = "s3://meu-bucket/dados-processados/clientes_brasil/"
+output_path = "s3://douglasmaiatomebucket/dados-processados/clientes_brasil/"
 logger.info(f"Gravando dados transformados em: {output_path}")
 
 df_transformado.write.mode("overwrite").parquet(output_path)
