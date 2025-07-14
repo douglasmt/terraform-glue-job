@@ -11,9 +11,21 @@ resource "aws_glue_job" "mock_job" {
   default_arguments = {
     "--JOB_NAME"   = "job-transform-test"
     "--INPUT_PATH" = "s3://douglasmaiatomebucket/dados/clientes.csv"
+    "--enable-metrics"          = "true"
+    "--enable-continuous-cloudwatch-log" = "true"
+    "--enable-glue-datacatalog" = "true"
+    "--enable-spark-ui"         = "true"
+    "--spark-event-logs-path"   = "s3://douglasmaiatomebucket/logs/spark-events/"
   }
 
-  glue_version = "4.0"
-  max_capacity = 2
-  timeout      = 10
+  glue_version        = "4.0"
+  max_capacity        = 2
+  timeout             = 10
+  number_of_workers   = 2
+  worker_type         = "G.1X"
+
+  monitoring_configuration {
+    log_group_name = "/aws-glue/jobs/output"
+    log_stream_name_prefix = "ob-transform-test"
+  }
 }
