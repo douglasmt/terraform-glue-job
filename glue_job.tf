@@ -24,8 +24,4 @@ resource "aws_glue_job" "mock_job" {
   number_of_workers   = 2
   worker_type         = "G.1X"
 
-  monitoring_configuration {
-    log_group_name = "/aws-glue/jobs/output"
-    log_stream_name_prefix = "ob-transform-test"
-  }
 }
