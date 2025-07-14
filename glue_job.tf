@@ -19,8 +19,8 @@ resource "aws_glue_job" "mock_job" {
   }
 
   glue_version        = "4.0"
-  max_capacity        = 2
   timeout             = 10
+  number_of_workers   = 2
   worker_type         = "G.1X"
 
 }
