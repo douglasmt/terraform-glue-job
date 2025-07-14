@@ -1,5 +1,5 @@
 resource "aws_glue_job" "mock_job" {
-  name     = "mock-glue-job"
+  name     = "job-transform-test"
   role_arn = aws_iam_role.glue_service_role.arn
 
   command {
