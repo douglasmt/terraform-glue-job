@@ -52,7 +52,7 @@ resource "aws_iam_role_policy_attachment" "glue_attach_s3_access" {
 }
 
 resource "aws_iam_policy" "glue_cloudwatch_logs" {
-  name = "glue-cloudwatch-logs-access"
+  name = "glue-cloudwatch-logs-access-doug"
   policy = jsonencode({
     Version = "2012-10-17",
     Statement = [
