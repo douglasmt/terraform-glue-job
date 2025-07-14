@@ -8,10 +8,10 @@ data "aws_iam_policy_document" "glue_assume_role" {
   }
 }
 
-resource "aws_iam_role" "glue_service_role" {
-  name = "glue_service_role_${var.project_suffix}"
-  assume_role_policy = data.aws_iam_policy_document.glue_assume_role.json
-}
+# resource "aws_iam_role" "glue_service_role" {
+#   name = "glue_service_role_${var.project_suffix}"
+#   assume_role_policy = data.aws_iam_policy_document.glue_assume_role.json
+# }
 
 resource "aws_iam_role_policy_attachment" "glue_service_policy" {
   role       = aws_iam_role.glue_service_role.name
