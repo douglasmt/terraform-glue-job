@@ -50,3 +50,28 @@ resource "aws_iam_role_policy_attachment" "glue_attach_s3_access" {
   role       = "glue_service_role_doug-proj-1"
   policy_arn = aws_iam_policy.glue_s3_access.arn
 }
+
+resource "aws_iam_policy" "glue_cloudwatch_logs" {
+  name = "glue-cloudwatch-logs-access"
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Effect = "Allow",
+        Action = [
+          "logs:CreateLogGroup",
+          "logs:CreateLogStream",
+          "logs:PutLogEvents",
+          "logs:DescribeLogStreams",
+          "logs:DescribeLogGroups"
+        ],
+        Resource = "arn:aws:logs:*:*:*"
+      }
+    ]
+  })
+}
+
+resource "aws_iam_role_policy_attachment" "glue_attach_cloudwatch_logs" {
+  role       = "glue_service_role_doug-proj-1"
+  policy_arn = aws_iam_policy.glue_cloudwatch_logs.arn
+}
